@@ -52,13 +52,13 @@ preprocessor_defs = env_or_empty("GCC_PREPROCESSOR_DEFINITIONS")
 preprocessor_defs_parsed = map_and_list((lambda s: "-D" + s), shlex.split(preprocessor_defs, '\''))
 typescript_output_folder = env_or_none("TNS_TYPESCRIPT_DECLARATIONS_PATH")
 docset_platform = "iOS"
-effective_platofrm_name = env("EFFECTIVE_PLATFORM_NAME")
+effective_platform_name = env("EFFECTIVE_PLATFORM_NAME")
 
-if effective_platofrm_name is "-macosx":
+if effective_platform_name == "-macosx":
     docset_platform = "OSX"
-elif effective_platofrm_name is "-watchos" or effective_platofrm_name is "-watchsimulator":
+elif effective_platform_name == "-watchos" or effective_platform_name == "-watchsimulator":
     docset_platform = "watchOS"
-elif effective_platofrm_name is "-appletvos" or effective_platofrm_name is "-appletvsimulator":
+elif effective_platform_name == "-appletvos" or effective_platform_name == "-appletvsimulator":
     docset_platform = "tvOS"
 
 docset_path = os.path.join(os.path.expanduser("~"),
